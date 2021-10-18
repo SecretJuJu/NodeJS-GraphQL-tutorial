@@ -1,5 +1,6 @@
 import express from "express";
 import loader from "./loader";
+import env from "config/env";
 
 const app = express();
 
@@ -9,8 +10,6 @@ const loadSettings = async () => {
 
 loadSettings();
 
-const PORT = 3000;
-
-app.listen(PORT, () => {
-  console.log(`server is running at ${PORT}`);
+app.listen(env.PORT, () => {
+  console.log(`server is running at ${env.PORT}`);
 });
