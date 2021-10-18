@@ -1,4 +1,4 @@
-import { Schema, model, Document } from "mongoose";
+import { Schema, model, Document, Model } from "mongoose";
 
 interface UserModel {
   username: string;
@@ -14,5 +14,8 @@ const userSchema: Schema<UserModelDocument> = new Schema({
 
 userSchema.index({ username: 1 });
 
-const User = model<UserModelDocument>("User", userSchema);
+const User: Model<UserModelDocument> = model<UserModelDocument>(
+  "User",
+  userSchema
+);
 export { UserModel, UserModelDocument, User };
