@@ -6,11 +6,11 @@
   "author": "SeungBo <47034129+SecretJuJu@users.noreply.github.com>",
   "license": "MIT",
   "scripts": {
-    "prestart": "tsc",
-    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "start": "node dist/index.js",
-    "start:dev": "cross-env NODE_ENV=develop nodemon dist/index.js",
-    "start:prod": "cross-env NODE_ENV=production node dist/index.js"
+    "dev": "cross-env NODE_PATH=src/ nodemon --exec ts-node src/index.ts",
+    "test": "export NODE_ENV=test;cross-env NODE_PATH=src/ ts-mocha -p ./tsconfig.json ./src/app/*/tests.ts",
+    "build": "tsc -p .",
+    "start": "cross-env NODE_PATH=dist/ node dist/index.js",
+    "production-start": "cross-env NODE_PATH=dist/ pm2 start -i max dist/index.js"
   },
   "devDependencies": {
     "@types/cookie-parser": "^1.4.2",

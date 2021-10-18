@@ -1,16 +1,12 @@
 {
   "compilerOptions": {
-    "target": "es6",
     "module": "commonjs",
-    "allowJs": true,
-    "outDir": "./dist",
-    "strict": true,
+    "target": "es6",
     "moduleResolution": "node",
-    "baseUrl": ".",
+    "outDir": "dist",
+    "strict": true,
     "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "sourceMap": true,
-    "lib": ["esnext"]
-  }
+    "baseUrl": "src"
+  },
+  "include": ["src/**/*"]
 }
