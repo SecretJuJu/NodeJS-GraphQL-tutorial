@@ -4,7 +4,11 @@ import cors from "cors";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
 
-export default ({ app }) => {
+export interface ExpressLoader {
+  app: express.Express;
+}
+
+export default ({ app }: ExpressLoader) => {
   app.use(cors());
   app.use(helmet());
   app.use(express.json());
