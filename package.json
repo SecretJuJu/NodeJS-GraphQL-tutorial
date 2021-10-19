@@ -13,6 +13,7 @@
     "production-start": "cross-env NODE_PATH=dist/ pm2 start -i max dist/index.js"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
     "@types/cookie-parser": "^1.4.2",
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.13",
@@ -29,6 +30,7 @@
   },
   "dependencies": {
     "@types/helmet": "^4.0.0",
+    "bcrypt": "^5.0.1",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
