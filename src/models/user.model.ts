@@ -7,6 +7,10 @@ interface UserModel {
 
 interface UserModelDocument extends Document, UserModel {}
 
+type UserObject = UserModelDocument & {
+  _id: any;
+};
+
 const userSchema: Schema<UserModelDocument> = new Schema({
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
@@ -18,4 +22,4 @@ const User: Model<UserModelDocument> = model<UserModelDocument>(
   "User",
   userSchema
 );
-export { UserModel, UserModelDocument, User };
+export { UserModel, UserModelDocument, UserObject, User };
