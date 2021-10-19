@@ -16,14 +16,13 @@ export class UserService {
     return user;
   }
 
-  async createUser(createUserDto: CreateUserDto) {
+  async createUser(createUserDto: CreateUserDto): Promise<UserObject> {
     const isSameUserExist: boolean =
       (await this.getUserByUsername(createUserDto.username)) === null
         ? false
         : true;
 
     if (!isSameUserExist) {
-      // conflict error
       throw new CONFLICT_ERROR();
     }
 
