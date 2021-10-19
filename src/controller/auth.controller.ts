@@ -1,11 +1,16 @@
-import express from "express";
+import { Request, Response } from "express";
+import authService, { AuthService } from "service/auth/auth.service";
 
-const login = (req: express.Request, res: express.Response) => {};
-const register = (req: express.Request, res: express.Response) => {};
+import RequestValidator from "utils/request-validator";
+import CreateUserRequest from "request/auth/create-user.request";
 
-const AuthController = {
-  login,
-  register,
-};
+class AuthController {
+  constructor(private authService: AuthService) {}
 
-export default AuthController;
+  login(req: Request, res: Response) {}
+
+  @RequestValidator(CreateUserRequest)
+  register(req: CreateUserRequest, res: Response) {}
+}
+
+export default new AuthController(authService);
