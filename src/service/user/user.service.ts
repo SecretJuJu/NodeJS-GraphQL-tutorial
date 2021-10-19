@@ -6,10 +6,10 @@ import { CreateUserDto } from "./dtos/create-user.dto";
 import { CONFLICT_ERROR } from "error/http-errors";
 
 export class UserService {
-  constructor(private User: Model<UserModelDocument>) {}
+  constructor() {}
 
   async getUserByUsername(username: string): Promise<UserModelDocument | null> {
-    const user: UserModelDocument | null = await this.User.findOne({
+    const user: UserModelDocument | null = await User.findOne({
       username,
     });
 
@@ -22,16 +22,16 @@ export class UserService {
         ? false
         : true;
 
-    if (!isSameUserExist) {
+    if (isSameUserExist) {
       throw new CONFLICT_ERROR();
     }
 
     const hashedPassword = bcrypt.hashSync(createUserDto.password, 10); // sync
     createUserDto.password = hashedPassword;
-    const newUser: UserObject = await this.User.create(createUserDto);
+    const newUser: UserObject = await User.create(createUserDto);
     newUser.save();
     return newUser;
   }
 }
 
-export default new UserService(User);
+export default new UserService();

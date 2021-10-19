@@ -14,7 +14,6 @@ class BaseRequest {
     if (!errors.length) {
       return;
     }
-
     throw new VALIDATION_ERROR(errors);
   }
 
