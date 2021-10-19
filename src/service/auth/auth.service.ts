@@ -1,6 +1,6 @@
 import { compareSync } from "bcrypt";
 
-import { UNAUTHORIZED_ERROR } from "error/http-errors";
+import { UNAUTHORIZED_ERROR } from "error/http.error";
 import { UserObject } from "models/user.model";
 import { CreateUserDto } from "service/user/dtos/create-user.dto";
 import userService from "service/user/user.service";

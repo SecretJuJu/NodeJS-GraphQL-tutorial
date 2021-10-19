@@ -1,4 +1,4 @@
-import * as httpErrors from "./http-errors";
+import * as httpErrors from "./http.error";
 
 const errors = [...Object.values(httpErrors)];
 

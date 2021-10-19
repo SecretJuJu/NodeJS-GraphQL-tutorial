@@ -1,6 +1,6 @@
 import { Request } from "express";
 import { validate } from "class-validator";
-import { VALIDATION_ERROR } from "error/http-errors";
+import { VALIDATION_ERROR } from "error/http.error";
 
 class BaseRequest {
   req: Request;

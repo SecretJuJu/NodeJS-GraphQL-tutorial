@@ -2,9 +2,9 @@ import BaseRequest from "../base.request";
 import { Request } from "express";
 import { IsNotEmpty } from "class-validator";
 import { UserObject } from "models/user.model";
-import { ACCESS_TOKEN_INVAILD_ERROR } from "error/token.error";
+import * as AuthError from "error/auth.error";
 
-export interface OriginalAuthRequest extends Request {
+export interface AuthRequestObject extends Request {
   headers: {
     authorization: string;
   };
@@ -15,7 +15,7 @@ export default class AuthRequest extends BaseRequest {
   @IsNotEmpty()
   token: string;
 
-  constructor(req: OriginalAuthRequest) {
+  constructor(req: AuthRequestObject) {
     super(req);
     const { authorization } = req.headers;
     this.token = authorization?.replace("Bearer ", "");
@@ -23,12 +23,12 @@ export default class AuthRequest extends BaseRequest {
 
   async validate(): Promise<void> {
     if (!this.token) {
-      throw new ACCESS_TOKEN_INVAILD_ERROR();
+      throw new AuthError.ACCESS_TOKEN_INVAILD_ERROR();
     }
     await super.validate();
   }
 
   public setUser(user: UserObject): void {
-    this.getOriginRequest<OriginalAuthRequest>().user = user;
+    this.getOriginRequest<AuthRequestObject>().user = user;
   }
 }

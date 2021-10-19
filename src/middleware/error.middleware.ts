@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import errorTypes from "error";
-import BaseError from "error/base-error";
+import BaseError from "error/base.error";
 
 const errorMiddleware = (
   error: BaseError,
