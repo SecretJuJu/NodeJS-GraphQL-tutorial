@@ -3,7 +3,7 @@ import * as bcrypt from "bcrypt";
 
 import { User, UserModelDocument, UserObject } from "models/user.model";
 import { CreateUserDto } from "./dtos/create-user.dto";
-import { CONFLICT_ERROR } from "error";
+import { CONFLICT_ERROR } from "error/http-errors";
 
 export class UserService {
   constructor(private User: Model<UserModelDocument>) {}
