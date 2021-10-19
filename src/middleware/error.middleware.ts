@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import errors from "error";
+import errorTypes from "error";
 import BaseError from "error/base-error";
 
 const errorMiddleware = (
@@ -10,11 +10,16 @@ const errorMiddleware = (
 ): void => {
   // able to handle errors
   const registeredError: BaseError | undefined = error;
-  errors.find((e) => error instanceof e);
-  if (!registeredError) {
-    res.status(500).send();
+  errorTypes.find((errorType) => error instanceof errorType);
+
+  if (registeredError !== undefined) {
+    try {
+      registeredError.handleResponse(res);
+    } catch (err) {
+      res.status(500).send();
+    }
   } else {
-    registeredError.handleResponse(res);
+    res.status(500).send();
   }
 };
 
