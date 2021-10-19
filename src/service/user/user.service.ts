@@ -8,8 +8,8 @@ import { CONFLICT_ERROR } from "error/http-errors";
 export class UserService {
   constructor() {}
 
-  async getUserByUsername(username: string): Promise<UserModelDocument | null> {
-    const user: UserModelDocument | null = await User.findOne({
+  async getUserByUsername(username: string): Promise<UserObject | null> {
+    const user: UserObject | null = await User.findOne({
       username,
     });
 
