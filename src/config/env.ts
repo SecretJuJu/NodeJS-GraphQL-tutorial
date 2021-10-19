@@ -5,6 +5,8 @@ config();
 
 const env = {
   PORT: getEnv("PORT"),
+  JWT_SECRET: getEnv("JWT_SECRET"),
+  JWT_EXPIRATION: getEnv("JWT_EXPIRATION"),
   MONGO: {
     USER: getEnv("MONGO_USER"),
     PASSWORD: getEnv("MONGO_PASSWORD"),
