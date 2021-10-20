@@ -2,9 +2,9 @@ import { Response } from "express";
 import { StatusCodes } from "http-status-codes";
 import BASE_ERROR from "./base.error";
 
-export class AUTH_ERROR extends BASE_ERROR {
+export abstract class AUTH_ERROR extends BASE_ERROR {
   statusCode = 401;
-  msg = "";
+  abstract msg: string;
   handleResponse(res: Response) {
     res.status(StatusCodes.UNAUTHORIZED).send(this.msg);
   }

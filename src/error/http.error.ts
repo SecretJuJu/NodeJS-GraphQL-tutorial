@@ -4,8 +4,8 @@ import { StatusCodes } from "http-status-codes";
 
 import BASE_ERROR from "./base.error";
 
-export class HttpError extends BASE_ERROR {
-  statusCode = 0;
+export abstract class HttpError extends BASE_ERROR {
+  abstract statusCode: number;
   handleResponse(res: Response): void {
     res.status(this.statusCode).send();
   }
